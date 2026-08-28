@@ -1,4 +1,4 @@
-# Hi there, I'm Vishnu V 👋
+# Hi there, I'm Vishnu V
 
 ### 👨‍💻 Java Full Stack Developer
 I build enterprise backend applications using **Java 17+**, **Spring Boot**, **Spring Security**, and **MySQL**, along with responsive frontend tools.
