@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <title>Vishnu V | Java Full Stack Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Vishnu V, an aspiring Java Full Stack Developer specializing in Spring Boot, REST APIs, and Secure Backend Architecture.">
+    <meta name="keywords" content="Java, Spring Boot, Full Stack Developer, Backend Engineer, Hibernate, Portfolio, Software Engineer">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vishnu V | Java Full Stack Developer">
+    <meta property="og:description" content="Aspiring Java Full Stack Developer passionate about building secure, scalable, and high-performance applications.">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Vishnu V | Java Full Stack Developer">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0F172A',
+                        primaryBlue: '#2563EB',
+                        accentCyan: '#06B6D4',
+                        lightCyan: '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
+        
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .light .glass-panel {
+            background: rgba(15, 23, 42, 0.03);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        /* Custom Interactive Glow Cursor */
+        .custom-cursor {
+            width: 20px; height: 20px;
+            border: 2px solid #06B6D4;
+            border-radius: 50%;
+            position: fixed; transform: translate(-50%, -50%);
+            pointer-events: none; z-index: 9999;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        
+        /* Animated Background Blob */
+        .blob-bg {
+            filter: blur(80px);
+            animation: blobFloat 12s infinite alternate;
+        }
+        
+        @keyframes blobFloat {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(40px, -60px) scale(1.2); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Loading Screen Hide Animation */
+        .loader-hidden {
+            opacity: 0; pointer-events: none; transition: opacity 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-white transition-colors duration-300 class-dark id-top relative">
+
+    <div id="preloader" class="fixed inset-0 bg-darkBg z-[10000] flex flex-col justify-center items-center">
+        <div class="w-16 h-16 border-4 border-accentCyan border-t-transparent rounded-full animate-spin"></div>
+        <p class="mt-4 text-sm font-semibold tracking-widest text-lightCyan animate-pulse">COMPILING ARTIFACTS...</p>
+    </div>
+
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan z-[2000] w-0 transition-all duration-100"></div>
+
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-primaryBlue/10 blob-bg -z-10"></div>
+    <div class="absolute top-[40%] right-10 w-96 h-96 rounded-full bg-accentCyan/10 blob-bg -z-10" style="animation-delay: -3s;"></div>
+    <div class="absolute bottom-20 left-[20%] w-80 h-80 rounded-full bg-lightCyan/10 blob-bg -z-10" style="animation-delay: -6s;"></div>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 glass-panel border-b transition-transform duration-300 px-6 py-4 flex justify-between items-center">
+        <a href="#top" class="text-xl font-bold tracking-wider bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan bg-clip-text text-transparent">
+            &lt;VISHNU V /&gt;
+        </a>
+        
+        <div class="hidden md:flex space-x-8 items-center font-medium">
+            <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
+            <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
+            <a href="#skills" class="hover:text-accentCyan transition-colors">Skills</a>
+            <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
+            <a href="#services" class="hover:text-accentCyan transition-colors">Services</a>
+            <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
+            
+            <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full hover:bg-white/10 transition">
+                <i class="fa-solid id-theme-icon fa-sun text-lg text-lightCyan"></i>
+            </button>
+        </div>
+
+        <div class="md:hidden flex items-center space-x-4">
+            <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-white/10 transition">
+                <i class="fa-solid id-theme-icon-mob fa-sun text-lg text-lightCyan"></i>
+            </button>
+            <button id="menu-btn" aria-label="Open Menu" class="text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed top-[73px] left-0 w-full h-screen bg-darkBg/95 backdrop-blur-lg hidden flex-col pt-10 px-8 space-y-6 text-xl">
+            <a href="#about" class="mobile-link hover:text-accentCyan">About</a>
+            <a href="#experience" class="mobile-link hover:text-accentCyan">Experience</a>
+            <a href="#skills" class="mobile-link hover:text-accentCyan">Skills</a>
+            <a href="#projects" class="mobile-link hover:text-accentCyan">Projects</a>
+            <a href="#services" class="mobile-link hover:text-accentCyan">Services</a>
+            <a href="#contact" class="mobile-link hover:text-accentCyan">Contact</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen pt-32 pb-16 px-6 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="w-full md:w-1/2 flex flex-col space-y-6" data-aos="fade-right">
+            <span class="text-sm tracking-[0.3em] uppercase text-accentCyan font-bold">Welcome to my Digital Space</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Hi, I am <span class="bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan bg-clip-text text-transparent">Vishnu V</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-400">
+                I am a <span id="typed-text" class="text-lightCyan border-r-2 border-accentCyan animate-pulse"></span>
+            </h2>
+            <p class="text-slate-300 dark:text-slate-400 leading-relaxed max-w-lg">
+                Aspiring Java Full Stack Developer passionate about building secure, scalable, and high-performance applications using Java, Spring Boot, REST APIs, SQL, and modern web technologies. Strong foundation in DSA, OOP, DBMS, Software Engineering, and Backend Architecture.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 pt-4">
+                <a href="#contact" class="px-6 py-3 rounded-full bg-gradient-to-r from-primaryBlue to-accentCyan text-white font-semibold shadow-lg hover:shadow-accentCyan/20 hover:scale-105 transition-all">Hire Me</a>
+                <a href="#projects" class="px-6 py-3 rounded-full border border-white/20 glass-panel font-semibold hover:bg-white/10 transition-all">View Projects</a>
+                <a href="#" class="px-6 py-3 rounded-full border border-accentCyan text-accentCyan font-semibold hover:bg-accentCyan/10 transition-all"><i class="fa-solid fa-download mr-2"></i>Resume</a>
+            </div>
+
+            <div class="flex space-x-6 pt-6 text-2xl text-slate-400">
+                <a href="https://github.com" target="_blank" aria-label="GitHub Profile" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile" class="hover:text-primaryBlue transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:vishnuveerappan21@gmail.com" aria-label="Email Me" class="hover:text-accentCyan transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 flex justify-center" data-aos="fade-left">
+            <div class="relative w-72 h-96 md:w-80 md:h-[420px] rounded-2xl glass-panel p-4 shadow-2xl flex items-center justify-center transform hover:rotate-2 transition-transform duration-500" data-tilt>
+                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-primaryBlue to-accentCyan opacity-20 blur-sm"></div>
+                <svg viewBox="0 0 200 260" class="w-full h-full rounded-xl bg-slate-800/50">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:0.6" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grad)" />
+                    <circle cx="100" cy="100" r="50" fill="#0F172A" opacity="0.4" />
+                    <path d="M40 210 C 40 160, 160 160, 160 210 Z" fill="#0F172A" opacity="0.4" />
+                    <img src="me.jpeg">
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">About Me</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            
+            <div class="flex justify-center" data-aos="zoom-in">
+                <div class="w-64 h-64 rounded-full border-4 border-accentCyan/30 overflow-hidden relative glass-panel p-2 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-full h-full rounded-full fill-slate-700">
+                        <circle cx="50" cy="45" r="20"/>
+                        <path d="M20 85 C 20 65, 80 65, 80 85 Z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 space-y-6 text-slate-300 dark:text-slate-400" data-aos="fade-left">
+                <h3 class="text-2xl font-bold text-white">Engineering Robust & Efficient Software Structures</h3>
+                <p>
+                    I am a goal-oriented Software Engineering graduate with specialized technical capabilities in designing corporate enterprise architectures. My focus targets writing well-structured, production-grade clean code following strict standard object-oriented design policies.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-medium pt-2">
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-square-poll-vertical text-accentCyan"></i><span>Backend Expertise & Microservices</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-code text-accentCyan"></i><span>Data Structures & Algorithmic Parsing</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-layer-group text-accentCyan"></i><span>Clean Architecture & Design Patterns</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-shield-halved text-accentCyan"></i><span>Secure Communication Protocol Stacks</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Professional Milestones</h2>
+            <div class="relative border-l border-white/10 dark:border-slate-800 space-y-12 ml-4">
+                
+                <div class="relative pl-8" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentCyan shadow-[0_0_10px_#06B6D4]"></div>
+                    <span class="text-sm font-semibold text-lightCyan">Nov 2024 – Mar 2025</span>
+                    <h3 class="text-xl font-bold text-white mt-1">Software Engineer</h3>
+                    <h4 class="text-md text-slate-400">Genxlead Solution</h4>
+                    <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                        Managed large-scale configuration frameworks involving DNS routing infrastructure deployments, custom edge SMTP servers, and PowerMTA setups. Optimized transactional email architecture performance metrics using low-latency Linux system scripts.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">DNS/SMTP</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">PowerMTA</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Linux Bash</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Mail Infrastructure</span>
+                    </div>
+                </div>
+
+                <div class="relative pl-8" data-aos="fade-up" style="animation-delay: 0.2s;">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primaryBlue shadow-[0_0_10px_#2563EB]"></div>
+                    <span class="text-sm font-semibold text-lightCyan">Aug 2024 – Nov 2024</span>
+                    <h3 class="text-xl font-bold text-white mt-1">Java Full Stack Intern</h3>
+                    <h4 class="text-md text-slate-400">Shiash Infotech</h4>
+                    <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                        Contributed to real-time software development methodologies targeting a secure messaging layer platform using Spring Boot and Hibernate ORM tools. Configured cryptographic models (AES/RSA) to shield user entity metadata layers.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Spring Boot</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Hibernate ORM</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">AES / RSA Crypto</span>
+                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">MySQL</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Technical Ecosystem</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up">
+                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-terminal mr-2"></i>Programming languages</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Java SE/EE</span><span>90%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 90%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Python</span><span>75%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 75%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>SQL / RDBMS Syntax</span><span>85%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" style="animation-delay: 0.1s;">
+                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-cubes mr-2"></i>Frameworks / APIs</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Spring Boot</span><span>85%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Hibernate ORM</span><span>80%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>RESTful OpenAPIs</span><span>90%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 90%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" style="animation-delay: 0.2s;">
+                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-database mr-2"></i>Databases</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>MySQL Engine</span><span>85%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>PostgreSQL Cluster</span><span>70%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 70%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" style="animation-delay: 0.3s;">
+                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-sliders mr-2"></i>Infrastructure / Tools</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Git / GitHub VCS</span><span>85%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Linux CLI Administration</span><span>80%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Postman / JIRA Workflow</span><span>85%</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Production Showcases</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt>
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-primaryBlue/20 flex items-center justify-center text-primaryBlue text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="text-xl font-bold">Secure Communication Gateway</h3>
+                        <p class="text-sm text-slate-400">
+                            Enterprise middleware application executing symmetric/asymmetric cryptographic operations (AES-256 + RSA-4096) on runtime transactional network loads. Employs token state evaluation filters to drop malicious packet injections.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 flex space-x-4">
+                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt style="animation-delay: 0.1s;">
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-accentCyan/20 flex items-center justify-center text-accentCyan text-xl"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="text-xl font-bold">Face Recognition Attendance</h3>
+                        <p class="text-sm text-slate-400">
+                            Computer-vision based automated entry tracking program structured in Python using OpenCV libraries. Features algorithmic matrix alignment maps for processing local frames with downstream SQL transaction commits.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 flex space-x-4">
+                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt style="animation-delay: 0.2s;">
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-lightCyan/20 flex items-center justify-center text-lightCyan text-xl"><i class="fa-solid fa-brain"></i></div>
+                        <h3 class="text-xl font-bold">Career Guidance Recommendation</h3>
+                        <p class="text-sm text-slate-400">
+                            Machine learning classification parsing tool processing student academic profiling criteria vectors against employment matrix variables. Recommends career paths based on skill metrics mapping.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 flex space-x-4">
+                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-20 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Educational Profile</h2>
+        <div class="glass-panel p-8 rounded-2xl border flex flex-col md:flex-row justify-between gap-6" data-aos="fade-up">
+            <div class="space-y-2">
+                <span class="text-xs font-bold tracking-widest text-accentCyan uppercase">2020 – 2024</span>
+                <h3 class="text-2xl font-bold text-white">Bachelor of Technology (B.Tech)</h3>
+                <h4 class="text-md text-slate-400 font-medium">Information Technology — Mailam Engineering College</h4>
+                <p class="text-sm text-slate-400 max-w-lg mt-2">
+                    Acquired functional foundation matrices inside data processing loops, transactional relational structures, memory handling protocols, and standardized object blueprint rulesets.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2 content-start md:w-64">
+                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">DSA Core</span>
+                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">DBMS Architecture</span>
+                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">Operating Systems</span>
+                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">Computer Networks</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-r from-primaryBlue/20 to-accentCyan/20 backdrop-blur-md border-y border-white/5 px-6 md:px-20">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="2">0</div>
+                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold">Years Active Space</p>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="3">0</div>
+                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold">Production Builds</p>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="15">0</div>
+                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold">Tech Integrations</p>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="100">0</div>
+                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold">% Commitment Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Capabilities Spectrum</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up">
+                <div class="text-3xl text-accentCyan"><i class="fa-solid fa-gears"></i></div>
+                <h3 class="text-xl font-bold">Backend Architecture</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Developing deterministic transactional applications utilizing micro-context containers to streamline horizontal processing bandwidths.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up" style="animation-delay: 0.1s;">
+                <div class="text-3xl text-primaryBlue"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3 class="text-xl font-bold">RESTful Service Engineering</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Publishing highly descriptive endpoint pathways validated strictly via decoupled payload contracts over secure SSL contexts.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up" style="animation-delay: 0.2s;">
+                <div class="text-3xl text-lightCyan"><i class="fa-solid fa-database"></i></div>
+                <h3 class="text-xl font-bold">Relational Schema Mapping</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Structuring dynamic entity relations using modern indexes, normalization patterns, and optimized transaction isolated layers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="space-y-6" data-aos="fade-right">
+                <h2 class="text-3xl md:text-4xl font-bold">Initiate Connection</h2>
+                <p class="text-slate-400">
+                    Looking to add an energetic backend resource or assemble technical architecture logic? Send a message to open lines of collaborative communication.
+                </p>
+                <div class="space-y-4 pt-4 text-sm text-slate-300">
+                    <div class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-accentCyan text-lg w-6"></i><span>Chennai, Tamil Nadu, India</span></div>
+                    <div class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-primaryBlue text-lg w-6"></i><span>vishnuveerappan21@gmail.com</span></div>
+                    <div class="flex items-center space-x-3"><i class="fa-solid fa-phone text-lightCyan text-lg w-6"></i><span>+91 7339334021</span></div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl border shadow-2xl" data-aos="fade-left">
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Identifier / Name</label>
+                        <input type="text" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Network Mail Endpoint</label>
+                        <input type="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Context Message Payload</label>
+                        <textarea rows="4" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-primaryBlue to-accentCyan text-white font-semibold shadow-lg hover:brightness-110 active:scale-95 transition-all">Transmit Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/5 text-center text-xs text-slate-500 relative">
+        <p>© <span id="current-year"></span> Vishnu V. Processed via Structured Clean Code Patterns.</p>
+        
+        <a href="#top" aria-label="Scroll to top" class="fixed bottom-6 right-6 w-10 h-10 rounded-full glass-panel border flex items-center justify-center text-lightCyan hover:scale-110 transition-transform z-40 shadow-xl">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    
+    <script>
+        // 1. Hide Loading Mask screen
+        window.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loader-hidden');
+            }, 600);
+            document.getElementById('current-year').innerText = new Date().getFullYear();
+        });
+
+        // 2. Initializing Scroll Animation Nodes
+        AOS.init({ duration: 800, once: true });
+
+        // 3. Typographical Hero Script Engine Injection Loop
+        const lines = ["Java Developer", "Spring Boot Engineer", "Full Stack Architect"];
+        let lineIdx = 0, charIdx = 0, isDeleting = false;
+        const targetText = document.getElementById('typed-text');
+
+        function loopTyping() {
+            const currentLine = lines[lineIdx];
+            if (isDeleting) {
+                targetText.innerText = currentLine.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                targetText.innerText = currentLine.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let delta = 120 - Math.random() * 40;
+            if (isDeleting) delta /= 2;
+
+            if (!isDeleting && charIdx === currentLine.length) {
+                delta = 2000; // Pause at full word
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                lineIdx = (lineIdx + 1) % lines.length;
+                delta = 400;
+            }
+            setTimeout(loopTyping, delta);
+        }
+        setTimeout(loopTyping, 1000);
+
+        // 4. Custom Pointer Positioning Coordinates Hook
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // 5. Scroll Progress Indicators Monitoring
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+            
+            // Dynamic Navbar Hiding Logic on down scroll
+            const nav = document.getElementById('navbar');
+            if (winScroll > 150) {
+                nav.classList.add('shadow-xl', 'bg-darkBg/80');
+            } else {
+                nav.classList.remove('shadow-xl', 'bg-darkBg/80');
+            }
+        });
+
+        // 6. Mobile Side Menu Toggle Actions
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+        
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').className = "fa-solid fa-bars";
+            });
+        });
+
+        // 7. Light / Dark View Layer Interface State Handler
+        const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        themeToggles.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('light');
+                const icons = [document.querySelector('.id-theme-icon'), document.querySelector('.id-theme-icon-mob')];
+                icons.forEach(ico => {
+                    ico.classList.toggle('fa-sun');
+                    ico.classList.toggle('fa-moon');
+                });
+            });
+        });
+
+        // 8. Numerical Metrics Counter Incrementor Loop Hooks
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    let count = 0;
+                    const speed = target / 30;
+                    const updateCount = () => {
+                        count += speed;
+                        if(count < target) {
+                            entry.target.innerText = Math.ceil(count) + (target === 100 ? '%' : '+');
+                            setTimeout(updateCount, 25);
+                        } else {
+                            entry.target.innerText = target + (target === 100 ? '%' : '+');
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+
+        // 9. Interactive Form Dispatch Emulation Mockup Event Listener
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Payload packet validation confirmed. Transmission route generated successfully!");
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
