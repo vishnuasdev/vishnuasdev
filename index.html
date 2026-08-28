@@ -5,38 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="logo.png">
     <title>Vishnu V | Java Full Stack Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Vishnu V, an aspiring Java Full Stack Developer specializing in Spring Boot, REST APIs, and Secure Backend Architecture.">
-    <meta name="keywords" content="Java, Spring Boot, Full Stack Developer, Backend Engineer, Hibernate, Portfolio, Software Engineer">
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Vishnu V | Java Full Stack Developer">
-    <meta property="og:description" content="Aspiring Java Full Stack Developer passionate about building secure, scalable, and high-performance applications.">
-    
-    <!-- Twitter Metadata -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Vishnu V | Java Full Stack Developer">
+    <meta name="description" content="Portfolio of Vishnu V, Java Full Stack Developer specializing in Spring Boot, REST APIs, and Secure Backend Architecture.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0F172A',
                         lightBg: '#F8FAFC',
+                        cardBg: '#FFFFFF',
                         primaryBlue: '#2563EB',
-                        accentCyan: '#06B6D4',
-                        lightCyan: '#38BDF8',
+                        accentCyan: '#0891B2',
+                        textDark: '#0F172A',
+                        textMuted: '#475569',
                     }
                 }
             }
         }
     </script>
     
-    <!-- External Libraries -->
+    <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
@@ -45,219 +35,191 @@
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
+        /* Fast Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
         ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
         
-        /* Glassmorphism Styles */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
+        /* Ultra-Light Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(248, 250, 252, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        html.light .glass-panel {
-            background: rgba(15, 23, 42, 0.03);
-            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
 
-        /* Custom Dynamic Cursor */
-        .custom-cursor {
-            width: 20px; 
-            height: 20px;
-            border: 2px solid #06B6D4;
-            border-radius: 50%;
-            position: fixed; 
-            transform: translate(-50%, -50%);
-            pointer-events: none; 
-            z-index: 9999;
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        
-        /* Animated Background Blobs */
-        .blob-bg {
-            filter: blur(80px);
-            animation: blobFloat 12s infinite alternate;
-        }
-        
-        @keyframes blobFloat {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(40px, -60px) scale(1.2); }
-            100% { transform: translate(-20px, 20px) scale(0.9); }
+        /* Optimized Background Blobs */
+        .blob-light {
+            filter: blur(90px);
+            opacity: 0.35;
+            pointer-events: none;
         }
 
-        /* Preloader Hide Transition */
         .loader-hidden {
             opacity: 0; 
             pointer-events: none; 
-            transition: opacity 0.5s ease-out;
+            transition: opacity 0.3s ease-out;
         }
     </style>
 </head>
-<body id="top" class="bg-darkBg text-white dark:bg-darkBg dark:text-white transition-colors duration-300 relative">
+<body id="top" class="relative">
 
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 bg-darkBg z-[10000] flex flex-col justify-center items-center">
-        <div class="w-16 h-16 border-4 border-accentCyan border-t-transparent rounded-full animate-spin"></div>
-        <p class="mt-4 text-sm font-semibold tracking-widest text-lightCyan animate-pulse">COMPILING ARTIFACTS...</p>
+    <!-- Fast Preloader -->
+    <div id="preloader" class="fixed inset-0 bg-lightBg z-[10000] flex flex-col justify-center items-center">
+        <div class="w-12 h-12 border-4 border-primaryBlue border-t-transparent rounded-full animate-spin"></div>
     </div>
 
-    <!-- Scroll Progress Bar -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan z-[2000] w-0 transition-all duration-100"></div>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primaryBlue to-accentCyan z-[2000] w-0 transition-all duration-75"></div>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <!-- Light Background Blobs -->
+    <div class="absolute top-10 left-10 w-80 h-80 rounded-full bg-blue-300 blob-light -z-10"></div>
+    <div class="absolute top-[35%] right-10 w-96 h-96 rounded-full bg-cyan-300 blob-light -z-10"></div>
+    <div class="absolute bottom-20 left-[15%] w-80 h-80 rounded-full bg-indigo-200 blob-light -z-10"></div>
 
-    <!-- Ambient Background Blobs -->
-    <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-primaryBlue/10 blob-bg -z-10"></div>
-    <div class="absolute top-[40%] right-10 w-96 h-96 rounded-full bg-accentCyan/10 blob-bg -z-10" style="animation-delay: -3s;"></div>
-    <div class="absolute bottom-20 left-[20%] w-80 h-80 rounded-full bg-lightCyan/10 blob-bg -z-10" style="animation-delay: -6s;"></div>
-
-    <!-- Navigation Header -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 glass-panel border-b transition-all duration-300 px-6 py-4 flex justify-between items-center">
-        <a href="#top" class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan bg-clip-text text-transparent">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center transition-all">
+        <a href="#top" class="text-xl font-extrabold tracking-wider text-primaryBlue">
             &lt;VISHNU V /&gt;
         </a>
         
-        <div class="hidden md:flex space-x-8 items-center font-medium">
-            <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
-            <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
-            <a href="#skills" class="hover:text-accentCyan transition-colors">Skills</a>
-            <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
-            <a href="#services" class="hover:text-accentCyan transition-colors">Services</a>
-            <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
-            
-            <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full hover:bg-white/10 transition">
-                <i class="fa-solid fa-sun id-theme-icon text-lg text-lightCyan"></i>
-            </button>
+        <div class="hidden md:flex space-x-8 items-center font-semibold text-textMuted text-sm">
+            <a href="#about" class="hover:text-primaryBlue transition-colors">About</a>
+            <a href="#experience" class="hover:text-primaryBlue transition-colors">Experience</a>
+            <a href="#skills" class="hover:text-primaryBlue transition-colors">Skills</a>
+            <a href="#projects" class="hover:text-primaryBlue transition-colors">Projects</a>
+            <a href="#services" class="hover:text-primaryBlue transition-colors">Services</a>
+            <a href="#contact" class="hover:text-primaryBlue transition-colors">Contact</a>
         </div>
 
-        <div class="md:hidden flex items-center space-x-4">
-            <button id="theme-toggle-mobile" aria-label="Toggle Theme Mobile" class="p-2 rounded-full hover:bg-white/10 transition">
-                <i class="fa-solid fa-sun id-theme-icon-mob text-lg text-lightCyan"></i>
-            </button>
-            <button id="menu-btn" aria-label="Open Menu" class="text-2xl focus:outline-none">
+        <div class="md:hidden flex items-center">
+            <button id="menu-btn" aria-label="Open Menu" class="text-2xl text-textDark focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="fixed top-[73px] left-0 w-full h-screen bg-darkBg/95 backdrop-blur-lg hidden flex-col pt-10 px-8 space-y-6 text-xl">
-            <a href="#about" class="mobile-link hover:text-accentCyan">About</a>
-            <a href="#experience" class="mobile-link hover:text-accentCyan">Experience</a>
-            <a href="#skills" class="mobile-link hover:text-accentCyan">Skills</a>
-            <a href="#projects" class="mobile-link hover:text-accentCyan">Projects</a>
-            <a href="#services" class="mobile-link hover:text-accentCyan">Services</a>
-            <a href="#contact" class="mobile-link hover:text-accentCyan">Contact</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed top-[65px] left-0 w-full h-screen bg-lightBg/95 backdrop-blur-md hidden flex-col pt-8 px-8 space-y-6 text-lg font-semibold text-textDark">
+            <a href="#about" class="mobile-link hover:text-primaryBlue">About</a>
+            <a href="#experience" class="mobile-link hover:text-primaryBlue">Experience</a>
+            <a href="#skills" class="mobile-link hover:text-primaryBlue">Skills</a>
+            <a href="#projects" class="mobile-link hover:text-primaryBlue">Projects</a>
+            <a href="#services" class="mobile-link hover:text-primaryBlue">Services</a>
+            <a href="#contact" class="mobile-link hover:text-primaryBlue">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="min-h-screen pt-32 pb-16 px-6 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         <div class="w-full md:w-1/2 flex flex-col space-y-6" data-aos="fade-right">
-            <span class="text-sm tracking-[0.3em] uppercase text-accentCyan font-bold">Welcome to my Digital Space</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-                Hi, I am <span class="bg-gradient-to-r from-primaryBlue via-accentCyan to-lightCyan bg-clip-text text-transparent">Vishnu V</span>
+            <span class="text-xs font-bold tracking-[0.25em] uppercase text-accentCyan">Welcome to my Digital Space</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-textDark leading-tight">
+                Hi, I am <span class="bg-gradient-to-r from-primaryBlue to-accentCyan bg-clip-text text-transparent">Vishnu V</span>
             </h1>
-            <h2 class="text-2xl md:text-3xl font-semibold text-slate-400">
-                I am a <span id="typed-text" class="text-lightCyan border-r-2 border-accentCyan animate-pulse"></span>
+            <h2 class="text-2xl md:text-3xl font-bold text-textMuted">
+                Java Full Stack Developer
             </h2>
-            <p class="text-slate-300 dark:text-slate-400 leading-relaxed max-w-lg">
-                Aspiring Java Full Stack Developer passionate about building secure, scalable, and high-performance applications using Java, Spring Boot, REST APIs, SQL, and modern web technologies. Strong foundation in DSA, OOP, DBMS, Software Engineering, and Backend Architecture.
+            <p class="text-textMuted leading-relaxed max-w-lg">
+                Aspiring Java Full Stack Developer passionate about building secure, scalable, and high-performance applications using Java, Spring Boot, REST APIs, SQL, and modern web technologies.
             </p>
             
-            <div class="flex flex-wrap gap-4 pt-4">
-                <a href="#contact" class="px-6 py-3 rounded-full bg-gradient-to-r from-primaryBlue to-accentCyan text-white font-semibold shadow-lg hover:shadow-accentCyan/20 hover:scale-105 transition-all">Hire Me</a>
-                <a href="#projects" class="px-6 py-3 rounded-full border border-white/20 glass-panel font-semibold hover:bg-white/10 transition-all">View Projects</a>
-                <a href="#" class="px-6 py-3 rounded-full border border-accentCyan text-accentCyan font-semibold hover:bg-accentCyan/10 transition-all"><i class="fa-solid fa-download mr-2"></i>Resume</a>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#contact" class="px-6 py-3 rounded-full bg-primaryBlue text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all">Hire Me</a>
+                <a href="#projects" class="px-6 py-3 rounded-full border border-slate-300 glass-card font-semibold text-textDark hover:bg-slate-100 transition-all">View Projects</a>
+                <a href="#" class="px-6 py-3 rounded-full border border-accentCyan text-accentCyan font-semibold hover:bg-cyan-50 transition-all"><i class="fa-solid fa-download mr-2"></i>Resume</a>
             </div>
 
-            <div class="flex space-x-6 pt-6 text-2xl text-slate-400">
-                <a href="https://github.com" target="_blank" aria-label="GitHub Profile" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            <div class="flex space-x-6 pt-4 text-2xl text-slate-500">
+                <a href="https://github.com" target="_blank" aria-label="GitHub Profile" class="hover:text-primaryBlue transition-colors"><i class="fa-brands fa-github"></i></a>
                 <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn Profile" class="hover:text-primaryBlue transition-colors"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="mailto:vishnuveerappan21@gmail.com" aria-label="Email Me" class="hover:text-accentCyan transition-colors"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
 
         <div class="w-full md:w-1/2 flex justify-center" data-aos="fade-left">
-            <div class="relative w-72 h-96 md:w-80 md:h-[420px] rounded-2xl glass-panel p-4 shadow-2xl flex items-center justify-center transform hover:rotate-2 transition-transform duration-500" data-tilt>
-                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-primaryBlue to-accentCyan opacity-20 blur-sm"></div>
-                <div class="w-full h-full rounded-xl overflow-hidden relative bg-slate-800/50 flex items-center justify-center">
-                    <img src="me.jpeg" alt="Vishnu V" class="w-full h-full object-cover">
+            <div class="relative w-72 h-96 md:w-80 md:h-[420px] rounded-2xl glass-card p-3 shadow-xl flex items-center justify-center">
+                <div class="w-full h-full rounded-xl overflow-hidden relative bg-slate-100">
+                    <img src="me.jpeg" alt="Vishnu V" class="w-full h-full object-cover" loading="eager">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">About Me</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+    <section id="about" class="py-20 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-textDark mb-14" data-aos="fade-up">About Me</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
             
             <div class="flex justify-center" data-aos="zoom-in">
-                <div class="w-64 h-64 rounded-full border-4 border-accentCyan/30 overflow-hidden relative glass-panel p-2 flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" class="w-full h-full rounded-full fill-slate-700">
+                <div class="w-60 h-60 rounded-full border-4 border-blue-200 overflow-hidden relative glass-card p-2 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-full h-full rounded-full fill-slate-300">
                         <circle cx="50" cy="45" r="20"/>
                         <path d="M20 85 C 20 65, 80 65, 80 85 Z"/>
                     </svg>
                 </div>
             </div>
 
-            <div class="md:col-span-2 space-y-6 text-slate-300 dark:text-slate-400" data-aos="fade-left">
-                <h3 class="text-2xl font-bold text-white">Engineering Robust & Efficient Software Structures</h3>
+            <div class="md:col-span-2 space-y-6 text-textMuted" data-aos="fade-left">
+                <h3 class="text-2xl font-bold text-textDark">Engineering Robust & Efficient Software Structures</h3>
                 <p>
                     I am a goal-oriented Software Engineering graduate with specialized technical capabilities in designing corporate enterprise architectures. My focus targets writing well-structured, production-grade clean code following strict standard object-oriented design policies.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-medium pt-2">
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-square-poll-vertical text-accentCyan"></i><span>Backend Expertise & Microservices</span></div>
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-code text-accentCyan"></i><span>Data Structures & Algorithmic Parsing</span></div>
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-layer-group text-accentCyan"></i><span>Clean Architecture & Design Patterns</span></div>
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-shield-halved text-accentCyan"></i><span>Secure Communication Protocol Stacks</span></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-semibold text-textDark pt-2">
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-square-poll-vertical text-primaryBlue"></i><span>Backend Expertise & Microservices</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-code text-primaryBlue"></i><span>Data Structures & Algorithms</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-layer-group text-primaryBlue"></i><span>Clean Architecture & Design Patterns</span></div>
+                    <div class="flex items-center space-x-2"><i class="fa-solid fa-shield-halved text-primaryBlue"></i><span>Secure Communication Protocols</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+    <section id="experience" class="py-20 bg-slate-100/70 px-6 md:px-20 border-y border-slate-200">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Professional Milestones</h2>
-            <div class="relative border-l border-white/10 dark:border-slate-800 space-y-12 ml-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-textDark mb-14" data-aos="fade-up">Professional Milestones</h2>
+            <div class="relative border-l-2 border-slate-300 space-y-10 ml-4">
                 
                 <div class="relative pl-8" data-aos="fade-up">
-                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentCyan shadow-[0_0_10px_#06B6D4]"></div>
-                    <span class="text-sm font-semibold text-lightCyan">Nov 2024 – Mar 2025</span>
-                    <h3 class="text-xl font-bold text-white mt-1">Software Engineer</h3>
-                    <h4 class="text-md text-slate-400">Genxlead Solution</h4>
-                    <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentCyan border-2 border-white"></div>
+                    <span class="text-xs font-bold text-accentCyan uppercase tracking-wider">Nov 2024 – Mar 2025</span>
+                    <h3 class="text-xl font-bold text-textDark mt-1">Software Engineer</h3>
+                    <h4 class="text-sm font-semibold text-slate-500">Genxlead Solution</h4>
+                    <p class="text-textMuted mt-2 text-sm leading-relaxed">
                         Managed large-scale configuration frameworks involving DNS routing infrastructure deployments, custom edge SMTP servers, and PowerMTA setups. Optimized transactional email architecture performance metrics using low-latency Linux system scripts.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-3">
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">DNS/SMTP</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">PowerMTA</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Linux Bash</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Mail Infrastructure</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">DNS/SMTP</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">PowerMTA</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">Linux Bash</span>
                     </div>
                 </div>
 
                 <div class="relative pl-8" data-aos="fade-up">
-                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primaryBlue shadow-[0_0_10px_#2563EB]"></div>
-                    <span class="text-sm font-semibold text-lightCyan">Aug 2024 – Nov 2024</span>
-                    <h3 class="text-xl font-bold text-white mt-1">Java Full Stack Intern</h3>
-                    <h4 class="text-md text-slate-400">Shiash Infotech</h4>
-                    <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primaryBlue border-2 border-white"></div>
+                    <span class="text-xs font-bold text-primaryBlue uppercase tracking-wider">Aug 2024 – Nov 2024</span>
+                    <h3 class="text-xl font-bold text-textDark mt-1">Java Full Stack Intern</h3>
+                    <h4 class="text-sm font-semibold text-slate-500">Shiash Infotech</h4>
+                    <p class="text-textMuted mt-2 text-sm leading-relaxed">
                         Contributed to real-time software development methodologies targeting a secure messaging layer platform using Spring Boot and Hibernate ORM tools. Configured cryptographic models (AES/RSA) to shield user entity metadata layers.
                     </p>
                     <div class="flex flex-wrap gap-2 mt-3">
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Spring Boot</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">Hibernate ORM</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">AES / RSA Crypto</span>
-                        <span class="px-2.5 py-0.5 rounded-md text-xs bg-white/5 font-semibold border border-white/10">MySQL</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">Spring Boot</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">Hibernate ORM</span>
+                        <span class="px-3 py-1 rounded-md text-xs bg-white text-textDark font-semibold border border-slate-200">MySQL</span>
                     </div>
                 </div>
 
@@ -266,74 +228,70 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Technical Ecosystem</h2>
+    <section id="skills" class="py-20 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-textDark mb-14" data-aos="fade-up">Technical Ecosystem</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up">
-                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-terminal mr-2"></i>Programming</h3>
-                <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-2xl" data-aos="fade-up">
+                <h3 class="text-base font-bold text-primaryBlue mb-4"><i class="fa-solid fa-terminal mr-2"></i>Programming</h3>
+                <div class="space-y-4 text-xs font-semibold">
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Java SE/EE</span><span>90%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 90%"></div></div>
+                        <div class="flex justify-between mb-1"><span>Java SE/EE</span><span>90%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 90%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Python</span><span>75%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 75%"></div></div>
+                        <div class="flex justify-between mb-1"><span>Python</span><span>75%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 75%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>SQL / RDBMS Syntax</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 85%"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-cubes mr-2"></i>Frameworks & APIs</h3>
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Spring Boot</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Hibernate ORM</span><span>80%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>RESTful OpenAPIs</span><span>90%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 90%"></div></div>
+                        <div class="flex justify-between mb-1"><span>SQL / RDBMS Syntax</span><span>85%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-blue-400 h-1.5 rounded-full" style="width: 85%"></div></div>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-database mr-2"></i>Databases</h3>
-                <div class="space-y-4">
+            <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-base font-bold text-primaryBlue mb-4"><i class="fa-solid fa-cubes mr-2"></i>Frameworks & APIs</h3>
+                <div class="space-y-4 text-xs font-semibold">
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>MySQL Engine</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
+                        <div class="flex justify-between mb-1"><span>Spring Boot</span><span>85%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>PostgreSQL Cluster</span><span>70%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 70%"></div></div>
+                        <div class="flex justify-between mb-1"><span>Hibernate ORM</span><span>80%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1"><span>RESTful OpenAPIs</span><span>90%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-blue-400 h-1.5 rounded-full" style="width: 90%"></div></div>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-panel p-6 rounded-2xl border" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-lg font-bold text-lightCyan mb-4"><i class="fa-solid fa-sliders mr-2"></i>Tools & Infra</h3>
-                <div class="space-y-4">
+            <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-base font-bold text-primaryBlue mb-4"><i class="fa-solid fa-database mr-2"></i>Databases</h3>
+                <div class="space-y-4 text-xs font-semibold">
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Git / GitHub VCS</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
+                        <div class="flex justify-between mb-1"><span>MySQL Engine</span><span>85%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Linux CLI Administration</span><span>80%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
+                        <div class="flex justify-between mb-1"><span>PostgreSQL Cluster</span><span>70%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 70%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-base font-bold text-primaryBlue mb-4"><i class="fa-solid fa-sliders mr-2"></i>Tools & Infra</h3>
+                <div class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <div class="flex justify-between mb-1"><span>Git / GitHub VCS</span><span>85%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-primaryBlue h-1.5 rounded-full" style="width: 85%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-xs font-semibold mb-1"><span>Postman / JIRA Workflow</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div class="bg-lightCyan h-1.5 rounded-full" style="width: 85%"></div></div>
+                        <div class="flex justify-between mb-1"><span>Linux CLI Administration</span><span>80%</span></div>
+                        <div class="w-full bg-slate-200 h-1.5 rounded-full"><div class="bg-accentCyan h-1.5 rounded-full" style="width: 80%"></div></div>
                     </div>
                 </div>
             </div>
@@ -341,232 +299,140 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+    <section id="projects" class="py-20 bg-slate-100/70 px-6 md:px-20 border-y border-slate-200">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Production Showcases</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-textDark mb-14" data-aos="fade-up">Production Showcases</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt>
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-aos="fade-up">
                     <div class="p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-primaryBlue/20 flex items-center justify-center text-primaryBlue text-xl"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3 class="text-xl font-bold">Secure Communication Gateway</h3>
-                        <p class="text-sm text-slate-400">
-                            Enterprise middleware application executing symmetric/asymmetric cryptographic operations (AES-256 + RSA-4096) on runtime transactional network loads. Employs token state evaluation filters to drop malicious packet injections.
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-primaryBlue flex items-center justify-center text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="text-lg font-bold text-textDark">Secure Communication Gateway</h3>
+                        <p class="text-sm text-textMuted leading-relaxed">
+                            Enterprise middleware application executing symmetric/asymmetric cryptographic operations (AES-256 + RSA-4096) on runtime transactional network loads.
                         </p>
                     </div>
-                    <div class="p-6 pt-0 flex space-x-4">
-                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    <div class="p-6 pt-0">
+                        <a href="#" class="text-xs font-bold text-primaryBlue hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
                     </div>
                 </div>
 
-                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt data-aos-delay="100">
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                     <div class="p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-accentCyan/20 flex items-center justify-center text-accentCyan text-xl"><i class="fa-solid fa-camera"></i></div>
-                        <h3 class="text-xl font-bold">Face Recognition Attendance</h3>
-                        <p class="text-sm text-slate-400">
-                            Computer-vision based automated entry tracking program structured in Python using OpenCV libraries. Features algorithmic matrix alignment maps for processing local frames with downstream SQL transaction commits.
+                        <div class="w-12 h-12 rounded-xl bg-cyan-100 text-accentCyan flex items-center justify-center text-xl"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="text-lg font-bold text-textDark">Face Recognition Attendance</h3>
+                        <p class="text-sm text-textMuted leading-relaxed">
+                            Computer-vision based entry tracking program structured in Python using OpenCV libraries with downstream SQL transaction commits.
                         </p>
                     </div>
-                    <div class="p-6 pt-0 flex space-x-4">
-                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    <div class="p-6 pt-0">
+                        <a href="#" class="text-xs font-bold text-accentCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
                     </div>
                 </div>
 
-                <div class="glass-panel rounded-2xl border overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-tilt data-aos-delay="200">
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                     <div class="p-6 space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-lightCyan/20 flex items-center justify-center text-lightCyan text-xl"><i class="fa-solid fa-brain"></i></div>
-                        <h3 class="text-xl font-bold">Career Guidance Recommendation</h3>
-                        <p class="text-sm text-slate-400">
-                            Machine learning classification parsing tool processing student academic profiling criteria vectors against employment matrix variables. Recommends career paths based on skill metrics mapping.
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"><i class="fa-solid fa-brain"></i></div>
+                        <h3 class="text-lg font-bold text-textDark">Career Guidance System</h3>
+                        <p class="text-sm text-textMuted leading-relaxed">
+                            Machine learning classification parsing tool processing student academic profiling criteria vectors against employment matrix variables.
                         </p>
                     </div>
-                    <div class="p-6 pt-0 flex space-x-4">
-                        <a href="#" class="text-xs font-bold text-lightCyan hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
+                    <div class="p-6 pt-0">
+                        <a href="#" class="text-xs font-bold text-indigo-600 hover:underline"><i class="fa-brands fa-github mr-1"></i> Source Repository</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="py-24 px-6 md:px-20 max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Educational Profile</h2>
-        <div class="glass-panel p-8 rounded-2xl border flex flex-col md:flex-row justify-between gap-6" data-aos="fade-up">
-            <div class="space-y-2">
-                <span class="text-xs font-bold tracking-widest text-accentCyan uppercase">2020 – 2024</span>
-                <h3 class="text-2xl font-bold text-white">Bachelor of Technology (B.Tech)</h3>
-                <h4 class="text-md text-slate-400 font-medium">Information Technology — Mailam Engineering College</h4>
-                <p class="text-sm text-slate-400 max-w-lg mt-2">
-                    Acquired functional foundation matrices inside data processing loops, transactional relational structures, memory handling protocols, and standardized object blueprint rulesets.
-                </p>
-            </div>
-            <div class="flex flex-wrap gap-2 content-start md:w-64">
-                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">DSA Core</span>
-                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">DBMS Architecture</span>
-                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">Operating Systems</span>
-                <span class="px-2.5 py-1 text-xs rounded bg-white/5 font-medium border border-white/10">Computer Networks</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stat Counter Section -->
-    <section class="py-16 bg-gradient-to-r from-primaryBlue/20 to-accentCyan/20 backdrop-blur-md border-y border-white/5 px-6 md:px-20">
-        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="2">0</div>
-                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold font-bold">Years Active Space</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="3">0</div>
-                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold font-bold">Production Builds</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="15">0</div>
-                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold font-bold">Tech Integrations</p>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-extrabold text-white counter" data-target="100">0</div>
-                <p class="text-xs tracking-wider text-slate-400 uppercase mt-2 font-semibold font-bold">% Commitment Rate</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Capabilities Spectrum</h2>
+    <section id="services" class="py-20 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-textDark mb-14" data-aos="fade-up">Capabilities Spectrum</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up">
-                <div class="text-3xl text-accentCyan"><i class="fa-solid fa-gears"></i></div>
-                <h3 class="text-xl font-bold">Backend Architecture</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Developing deterministic transactional applications utilizing micro-context containers to streamline horizontal processing bandwidths.</p>
+            <div class="glass-card p-8 rounded-2xl space-y-4" data-aos="fade-up">
+                <div class="text-3xl text-primaryBlue"><i class="fa-solid fa-gears"></i></div>
+                <h3 class="text-xl font-bold text-textDark">Backend Architecture</h3>
+                <p class="text-sm text-textMuted leading-relaxed">Developing deterministic transactional applications utilizing micro-context containers to streamline horizontal processing bandwidths.</p>
             </div>
-            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-3xl text-primaryBlue"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                <h3 class="text-xl font-bold">RESTful Service Engineering</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Publishing highly descriptive endpoint pathways validated strictly via decoupled payload contracts over secure SSL contexts.</p>
+            <div class="glass-card p-8 rounded-2xl space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-3xl text-accentCyan"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3 class="text-xl font-bold text-textDark">RESTful Service Engineering</h3>
+                <p class="text-sm text-textMuted leading-relaxed">Publishing highly descriptive endpoint pathways validated strictly via decoupled payload contracts over secure SSL contexts.</p>
             </div>
-            <div class="glass-panel p-8 rounded-2xl border space-y-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-3xl text-lightCyan"><i class="fa-solid fa-database"></i></div>
-                <h3 class="text-xl font-bold">Relational Schema Mapping</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Structuring dynamic entity relations using modern indexes, normalization patterns, and optimized transaction isolated layers.</p>
+            <div class="glass-card p-8 rounded-2xl space-y-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-3xl text-indigo-600"><i class="fa-solid fa-database"></i></div>
+                <h3 class="text-xl font-bold text-textDark">Relational Schema Mapping</h3>
+                <p class="text-sm text-textMuted leading-relaxed">Structuring dynamic entity relations using modern indexes, normalization patterns, and optimized transaction isolated layers.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white/5 dark:bg-black/20 px-6 md:px-20">
+    <section id="contact" class="py-20 bg-slate-100/70 px-6 md:px-20 border-t border-slate-200">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
             <div class="space-y-6" data-aos="fade-right">
-                <h2 class="text-3xl md:text-4xl font-bold">Initiate Connection</h2>
-                <p class="text-slate-400">
+                <h2 class="text-3xl md:text-4xl font-bold text-textDark">Initiate Connection</h2>
+                <p class="text-textMuted">
                     Looking to add an energetic backend resource or assemble technical architecture logic? Send a message to open lines of collaborative communication.
                 </p>
-                <div class="space-y-4 pt-4 text-sm text-slate-300">
-                    <div class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-accentCyan text-lg w-6"></i><span>Chennai, Tamil Nadu, India</span></div>
+                <div class="space-y-4 pt-2 text-sm text-textDark font-medium">
+                    <div class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-primaryBlue text-lg w-6"></i><span>Chennai, Tamil Nadu, India</span></div>
                     <div class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-primaryBlue text-lg w-6"></i><span>vishnuveerappan21@gmail.com</span></div>
-                    <div class="flex items-center space-x-3"><i class="fa-solid fa-phone text-lightCyan text-lg w-6"></i><span>+91 7339334021</span></div>
+                    <div class="flex items-center space-x-3"><i class="fa-solid fa-phone text-primaryBlue text-lg w-6"></i><span>+91 7339334021</span></div>
                 </div>
             </div>
 
-            <div class="glass-panel p-8 rounded-2xl border shadow-2xl" data-aos="fade-left">
+            <div class="glass-card p-8 rounded-2xl shadow-sm" data-aos="fade-left">
                 <form id="contact-form" class="space-y-4">
                     <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Identifier / Name</label>
-                        <input type="text" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors">
+                        <label class="text-xs font-bold uppercase tracking-wider text-textMuted block mb-2">Identifier / Name</label>
+                        <input type="text" required class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:border-primaryBlue transition-colors text-textDark">
                     </div>
                     <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Network Mail Endpoint</label>
-                        <input type="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors">
+                        <label class="text-xs font-bold uppercase tracking-wider text-textMuted block mb-2">Network Mail Endpoint</label>
+                        <input type="email" required class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:border-primaryBlue transition-colors text-textDark">
                     </div>
                     <div>
-                        <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Context Message Payload</label>
-                        <textarea rows="4" required class="w-full bg-slate-900/50 border border-white/10 rounded-lg p-3 text-sm focus:outline-none focus:border-accentCyan transition-colors"></textarea>
+                        <label class="text-xs font-bold uppercase tracking-wider text-textMuted block mb-2">Context Message Payload</label>
+                        <textarea rows="4" required class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:border-primaryBlue transition-colors text-textDark"></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-primaryBlue to-accentCyan text-white font-semibold shadow-lg hover:brightness-110 active:scale-95 transition-all">Transmit Message</button>
+                    <button type="submit" class="w-full py-3 rounded-lg bg-primaryBlue text-white font-semibold shadow-md hover:bg-blue-700 transition-all">Transmit Message</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-white/5 text-center text-xs text-slate-500 relative">
+    <footer class="py-8 border-t border-slate-200 text-center text-xs text-slate-500 bg-white">
         <p>© <span id="current-year"></span> Vishnu V. Processed via Structured Clean Code Patterns.</p>
         
-        <a href="#top" aria-label="Scroll to top" class="fixed bottom-6 right-6 w-10 h-10 rounded-full glass-panel border flex items-center justify-center text-lightCyan hover:scale-110 transition-transform z-40 shadow-xl">
+        <a href="#top" aria-label="Scroll to top" class="fixed bottom-6 right-6 w-10 h-10 rounded-full glass-card border border-slate-300 flex items-center justify-center text-primaryBlue hover:scale-105 transition-transform z-40 shadow-md">
             <i class="fa-solid fa-arrow-up"></i>
         </a>
     </footer>
 
-    <!-- External Scripts -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    
     <script>
-        // Preloader
+        // Optimized Fast Preloader & Date
         window.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('loader-hidden');
-            }, 600);
+            document.getElementById('preloader').classList.add('loader-hidden');
             document.getElementById('current-year').innerText = new Date().getFullYear();
         });
 
         // Initialize Scroll Animations
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 600, once: true });
 
-        // Hero Section Typing Effect
-        const lines = ["Java Developer", "Spring Boot Engineer", "Full Stack Architect"];
-        let lineIdx = 0, charIdx = 0, isDeleting = false;
-        const targetText = document.getElementById('typed-text');
-
-        function loopTyping() {
-            const currentLine = lines[lineIdx];
-            if (isDeleting) {
-                targetText.innerText = currentLine.substring(0, charIdx - 1);
-                charIdx--;
-            } else {
-                targetText.innerText = currentLine.substring(0, charIdx + 1);
-                charIdx++;
-            }
-
-            let delta = 120 - Math.random() * 40;
-            if (isDeleting) delta /= 2;
-
-            if (!isDeleting && charIdx === currentLine.length) {
-                delta = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIdx === 0) {
-                isDeleting = false;
-                lineIdx = (lineIdx + 1) % lines.length;
-                delta = 400;
-            }
-            setTimeout(loopTyping, delta);
-        }
-        setTimeout(loopTyping, 1000);
-
-        // Custom Cursor Coordinates
-        const cursor = document.getElementById('cursor');
-        window.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Scroll Progress & Floating Nav Dynamic Shadow
+        // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById('scroll-progress').style.width = scrolled + '%';
-            
-            const nav = document.getElementById('navbar');
-            if (winScroll > 150) {
-                nav.classList.add('shadow-xl', 'bg-darkBg/80');
-            } else {
-                nav.classList.remove('shadow-xl', 'bg-darkBg/80');
-            }
         });
 
-        // Mobile Side Menu Toggle
+        // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
@@ -576,7 +442,7 @@
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
         });
-        
+
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -585,47 +451,10 @@
             });
         });
 
-        // Light / Dark Theme Mode Handler
-        const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
-        themeToggles.forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.documentElement.classList.toggle('light');
-                const icons = [document.querySelector('.id-theme-icon'), document.querySelector('.id-theme-icon-mob')];
-                icons.forEach(ico => {
-                    ico.classList.toggle('fa-sun');
-                    ico.classList.toggle('fa-moon');
-                });
-            });
-        });
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const target = +entry.target.getAttribute('data-target');
-                    let count = 0;
-                    const speed = target / 30;
-                    const updateCount = () => {
-                        count += speed;
-                        if(count < target) {
-                            entry.target.innerText = Math.ceil(count) + (target === 100 ? '%' : '+');
-                            setTimeout(updateCount, 25);
-                        } else {
-                            entry.target.innerText = target + (target === 100 ? '%' : '+');
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(c => counterObserver.observe(c));
-
-        // Form Submit Handler
+        // Form Handler
         document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert("Payload packet validation confirmed. Transmission route generated successfully!");
+            alert("Message transmitted successfully!");
             e.target.reset();
         });
     </script>
