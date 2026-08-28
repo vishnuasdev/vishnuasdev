@@ -469,6 +469,46 @@
             alert("Message transmitted successfully!");
             e.target.reset();
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select all internal anchor links starting with '#'
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Handle scrolling back to top if target is top or empty
+                    if (targetId === 'top' || targetId === '') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        history.pushState(null, null, window.location.pathname);
+                        return;
+                    }
+
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // Smoothly scroll to target section
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                        // Keep clean URL path without appending hash
+                        history.pushState(null, null, window.location.pathname);
+                    }
+                });
+            });
+
+            // Clean URL if a user visits directly with a hash in the address bar
+            if (window.location.hash) {
+                history.replaceState(null, null, window.location.pathname);
+            }
+        });
     </script>
 </body>
 </html>
