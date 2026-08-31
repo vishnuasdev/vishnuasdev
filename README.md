@@ -76,9 +76,3 @@
     </td>
   </tr>
 </table>
-
----
-
-<p align="center">
-  <i>Designed by <a href="https://github.com/vishnuasdev">Vishnu V</a></i>
-</p>
