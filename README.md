@@ -4,7 +4,7 @@
 
 ---
 
-### 🌐 Connect & Links
+🌐 Connect & Links
 
 * 🌐 **Portfolio:** [vishnuasdev.github.io](https://vishnuasdev.github.io/vishnuasdev/)
 * 💼 **LinkedIn:** [linkedin.com/in/vishnuasdev](https://www.linkedin.com/in/vishnuasdev)
@@ -13,7 +13,7 @@
 
 ---
 
-### 👨‍💻 About Me
+👨‍💻 About Me
 
 * 🔭 Currently developing scalable backend systems using **Java 17+**, **Spring Boot**, and **MySQL**.
 * 🛡️ Focused on enterprise application security with **Spring Security** and **JWT authentication**.
@@ -21,7 +21,7 @@
 
 ---
 
-### 🛠 Tech Stack & Tools
+🛠 Tech Stack & Tools
 
 | Category | Technologies |
 | :--- | :--- |
@@ -32,9 +32,9 @@
 
 ---
 
-### ⚡ Featured Projects
+⚡ Featured Projects
 
-#### 🚗 [Car Rental Management System](https://github.com/vishnuasdev/my_projects/)
+🚗 [Car Rental Management System](https://github.com/vishnuasdev/my_projects/)
 A full-stack enterprise rental application with secure role-based access management.
 
 * **Tech Stack:** Spring Boot, Spring Security, JWT, Hibernate, MySQL, React
