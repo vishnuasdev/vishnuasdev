@@ -39,9 +39,3 @@ A full-stack enterprise rental application with secure role-based access managem
 
 * **Tech Stack:** Spring Boot, Spring Security, JWT, Hibernate, MySQL, React
 * **Key Features:** Dynamic authorization pipelines (`OWNER`, `CUSTOMER`, `AGENCY`), BLOB image storage, custom JWT filters.
-
----
-
-<p align="center">
-  <i>Designed by <a href="https://github.com/vishnuasdev">Vishnu V</a></i>
-</p>
