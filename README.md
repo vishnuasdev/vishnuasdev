@@ -1,11 +1,11 @@
-# Hi there, I'm Vishnu V
+Hi there, I'm Vishnu V
 
-### 👨‍💻 Java Full Stack Developer
+👨‍💻 Java Full Stack Developer [(Portfolio)](https://vishnuasdev.github.io/vishnuasdev/)
 I build enterprise backend applications using **Java 17+**, **Spring Boot**, **Spring Security**, and **MySQL**, along with responsive frontend tools.
 
 ---
 
-### 🛠 Tech Stack & Tools
+🛠 Tech Stack & Tools
 
 **Backend & Architecture**
 `Java 17` • `Spring Boot` • `Spring Security (JWT)` • `Spring Data JPA` • `Hibernate` • `REST APIs` • `Microservices`
@@ -18,7 +18,7 @@ I build enterprise backend applications using **Java 17+**, **Spring Boot**, **S
 
 ---
 
-### ⚡ Key Featured Projects
+⚡ Key Featured Projects
 
 * **[Car Rental Management System](./car-rental-service)**  
   *Built with Spring Boot, Spring Security (JWT), Hibernate, and MySQL.*
