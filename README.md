@@ -9,7 +9,6 @@
 * 🌐 **Portfolio:** [vishnuasdev.github.io](https://vishnuasdev.github.io/vishnuasdev/)
 * 💼 **LinkedIn:** [linkedin.com/in/vishnuasdev](https://www.linkedin.com/in/vishnuasdev)
 * 📧 **Email:** [vishnuveerappan21@gmail.com](mailto:vishnuveerappan21@gmail.com)
-* 🐙 **GitHub:** [github.com/vishnuasdev](https://github.com/vishnuasdev)
 
 ---
 
